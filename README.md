@@ -284,8 +284,8 @@ $gunzip -c backup.cpio.gz | cpio -i – descompactando com o gzip
 
 - Todo Programa no Linux recebe tres escritos, Entrada padrão, saída padrão e saída com erro
 
-- > Se existir, sobresceve. Se não existir ele cria a saída.
-- > > Append, inseri o resultado no final do arquivo.
+- \> Se existir, sobresceve. Se não existir ele cria a saída.
+- \>> Append, inseri o resultado no final do arquivo.
   - 1> O 1 é omitido, é o código do std out.
   - 2> Redireciona o erro do comando
 - Ls -l {Aula,AULA}3> Saida-ls.out 2>&1 : Saída padrão e erro para o mesmo lugar
