@@ -279,3 +279,61 @@ $gunzip -c backup.cpio.gz | cpio -i – descompactando com o gzip
 
 - dd – usado para copiar uma partição inteira, copia byte a byte
 - DD if=/dev/sr0 of=imagem.img
+
+### 103.4 Fluxos, pipes e redirecionamentos
+
+- Todo Programa no Linux recebe tres escritos, Entrada padrão, saída padrão e saída com erro
+
+- > Se existir, sobresceve. Se não existir ele cria a saída.
+- > > Append, inseri o resultado no final do arquivo.
+  - 1> O 1 é omitido, é o código do std out.
+  - 2> Redireciona o erro do comando
+- Ls -l {Aula,AULA}3> Saida-ls.out 2>&1 : Saída padrão e erro para o mesmo lugar
+
+```bash
+Cat alunos.txt | tr ‘a-z’ ‘A-Z’
+Sort alunos.txt | uniq -d
+```
+
+- Tee – exibe na tela e escreve no arquivo
+
+```bash
+Ls -l /tmp | tee novo-arquivo-log
+```
+
+Xargs, pega a saída de um comando e envia para o outro comando. Linha por linha
+
+```bash
+Find /home -name “Aula3*”
+Find /home -name “Aula3*” | xargs ls-l
+```
+
+- `Crase: executa primeiramente o comando e coloca junto com outro comando.
+
+```bash
+Echo “ a versão do kernel é: “`uname -r `
+```
+
+#### Outros redirecionamentos
+
+O << é usado quando você deseja inserir um conteúdo interativamente, até que informe seu fim. Por exemplo:
+
+```bash
+$ tr a-z A-Z << final
+> Curso Preparatoria para Certificacoes
+> lpic-1
+> comptia linux+
+> final
+
+```
+
+- Veja que a string "final" (pode ser qualquer string) vai informar ao shell que a entrada termina naquele ponto, e então ele irá enviar essa entrada ao comando tr.
+- O outro redirecionador é o <<<, que é chamado de "here string". Ele simplesmente redireciona o que o segue como se fosse o conteúdo de um arquivo texto. Por exemplo:
+
+```bash
+$ tr a-z A-Z < teste.txt
+bash: teste.txt: Arquivo ou diretório não encontrado
+
+$ tr a-z A-Z <<< teste.txt
+TESTE.TXT
+```
