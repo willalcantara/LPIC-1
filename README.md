@@ -402,16 +402,28 @@ Watch  -n1 “ps axu | grep Firefox”
 ```
 
 - Tmux: Controla vários terminais em uma sessão só.
-- Ctrl+B+C : nova janela
-- Ctrl+D,novonome: renomeia a janela
-- Ctrl+B+P : Janela anterior
-- Ctrl+B+N : Proxima
-- Ctl+B+L: Última que vc estava
-- Ctl+B+W: Lista as jenalas que vc possui
-- Ctr+B+%: Abre um painel vertical
-- Ctr+B+seta: vai pro painel da direção da seta. / Ctrl+B+”: janela horizotal
-- Ctrl + B + D: Desatachar, sair do Tmux
+   - Ctrl+B+C : nova janela
+   - Ctrl+D, novonome: renomeia a janela
+   - Ctrl+B+P : Janela anterior
+   - Ctrl+B+N : Proxima
+   - Ctl+B+L: Última que vc estava
+   - Ctl+B+W: Lista as jenalas que vc possui
+   - Ctr+B+%: Abre um painel vertical
+   - Ctr+B+seta: vai pro painel da direção da seta. / Ctrl+B+”: janela horizotal
+   - Ctrl + B + D: Desatachar, sair do Tmux
 - Tmux Attach -t 0: consegue conectar na antiga sessão
 - Tmux ls : mostra as conexões do tmux
 - Tmux new -s connection: abre uma nova conexão
 - Ctrl + B +& : matar a conexão ou “tmux kill-session t 0”
+
+### 103.6 Modificar a prioridade da execução de processos – Nice renice
+
+- O Linux possui um algoritmo para definição de prioridade de processos.
+- O Nice(NI) pode ser definida pelo usuário. [-20 ... +19], sendo o Menor valor, mais prioridade.
+- Somente o administrador pode aumentar a prioridade de um processo.
+- Nice -n 15 firefox &
+- Nice –15 gnome-calculator &
+- Nice –adjustment=-10
+- Renice -n 8 20509 – altera a prioridade de um processo já iniciado.
+- Renice 8 20509
+- Renice -n 5 -u lpi1
