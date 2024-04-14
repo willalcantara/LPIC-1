@@ -337,3 +337,81 @@ bash: teste.txt: Arquivo ou diretório não encontrado
 $ tr a-z A-Z <<< teste.txt
 TESTE.TXT
 ```
+
+### 103.5 Criar, monitorar e encerrar processos
+
+- PID – Process ID.
+- PPID – Parent Process ID (processo pai)
+- Primeiro processo é sempre o INIT, seu ID é 1.
+- Ps – Exibe os processos rodando neste terminal.
+- PS -u – Mostra os processos do usuário.
+- PS -ux – Esta mostrando processo que não foram iniciados diretamente no TTY.
+- PS -uxa – Mostra os processos de todos os usuários.
+- PS -uxaf – Mostra os processos em formato de arvore.
+- PS -lxa – Mostra o ID do usuário e et.
+- PS -axu | grep photo – Exibe os processos e adiciona aos filtros
+- PS -u -C VBoxClient – Lista os processos do VBoxClient
+- Pstree – Mostra os processos em formato de uma arvore
+- Systemd – o init era o sistema de gerenciador principal, porém hoje outros sistemas gerenciadores de processo são usados.
+- Pgrep – Mostra os ID do processo de acordo com os parâmetros
+- Psgrep bash – mostra os ID dos processos do bash
+
+Comando TOP
+
+- Exibe informações gerais da máquina e dos processos.
+- Load average: mostra qual o tamanho da fila e que estão executados, valor ótimo é abaixo de 1.
+- TOP -b – joga informação na tela
+- Top -b -d3 – Delay de 3 segundos
+- Top -b -d2 -n5 > process-linux. A cada 2 segundos execute por 5 vezes o comando e joga o arquivo.
+- Kill – manda sinais a um processo.
+- Kill -l – mostra todos os sinais que eu posso mandar para um processo.
+- SIGHUP – terminar, reiniciar ou pode fazer a releitura das configurações
+- SIGINT – interrompe o processo.
+- SIGQUIT – fecha o processo, normalmente para.
+- Kll – Encerra o processos.
+- SIGTERM – Solicita ao processo que sinalize.
+- Kill all – mata o processo baseado no nome.
+- Pkill – encontra o processo e mata.
+- Free – quantidade de memória e swap do sistema
+- Free -m – exibe em mega
+- Free -g – exibe em giga
+  - Used – esta reservada(alocada) para o uso, sua preocupação deve ser em torno da SWAP.
+- Screen – usado para trabalhar em varias abas.
+  - Ctrl+a +c , cria uma nova aba
+  - Ctrl+a +n , altera as abas
+  - Ctrl+a + D, sair da seção do screen
+  - Screen -r, retorna a seção
+- Processo & - Indica que você quer o processo em backgroud.
+- Job – mostra os processo em background
+- Ctrl + Z – coloco em stop o processo.
+- Bg- coloca o ultimo processo em background
+- Fg – coloca o ultimo processo em foreground
+- Nohup – evita que os processos morram em caso de uma desconecção.
+
+```bash
+	$Nohup Firefox &
+```
+
+Watch – executa programa periodicamente exibindo resultados
+
+```bash
+watch date
+Watch free -h
+Watch “ps axu | grep Firefox”
+Watch  -n1 “ps axu | grep Firefox”
+```
+
+- Tmux: Controla vários terminais em uma sessão só.
+- Ctrl+B+C : nova janela
+- Ctrl+D,novonome: renomeia a janela
+- Ctrl+B+P : Janela anterior
+- Ctrl+B+N : Proxima
+- Ctl+B+L: Última que vc estava
+- Ctl+B+W: Lista as jenalas que vc possui
+- Ctr+B+%: Abre um painel vertical
+- Ctr+B+seta: vai pro painel da direção da seta. / Ctrl+B+”: janela horizotal
+- Ctrl + B + D: Desatachar, sair do Tmux
+- Tmux Attach -t 0: consegue conectar na antiga sessão
+- Tmux ls : mostra as conexões do tmux
+- Tmux new -s connection: abre uma nova conexão
+- Ctrl + B +& : matar a conexão ou “tmux kill-session t 0”
