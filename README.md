@@ -402,15 +402,15 @@ Watch  -n1 “ps axu | grep Firefox”
 ```
 
 - Tmux: Controla vários terminais em uma sessão só.
-   - Ctrl+B+C : nova janela
-   - Ctrl+D, novonome: renomeia a janela
-   - Ctrl+B+P : Janela anterior
-   - Ctrl+B+N : Proxima
-   - Ctl+B+L: Última que vc estava
-   - Ctl+B+W: Lista as jenalas que vc possui
-   - Ctr+B+%: Abre um painel vertical
-   - Ctr+B+seta: vai pro painel da direção da seta. / Ctrl+B+”: janela horizotal
-   - Ctrl + B + D: Desatachar, sair do Tmux
+  - Ctrl+B+C : nova janela
+  - Ctrl+D, novonome: renomeia a janela
+  - Ctrl+B+P : Janela anterior
+  - Ctrl+B+N : Proxima
+  - Ctl+B+L: Última que vc estava
+  - Ctl+B+W: Lista as jenalas que vc possui
+  - Ctr+B+%: Abre um painel vertical
+  - Ctr+B+seta: vai pro painel da direção da seta. / Ctrl+B+”: janela horizotal
+  - Ctrl + B + D: Desatachar, sair do Tmux
 - Tmux Attach -t 0: consegue conectar na antiga sessão
 - Tmux ls : mostra as conexões do tmux
 - Tmux new -s connection: abre uma nova conexão
@@ -427,3 +427,76 @@ Watch  -n1 “ps axu | grep Firefox”
 - Renice -n 8 20509 – altera a prioridade de um processo já iniciado.
 - Renice 8 20509
 - Renice -n 5 -u lpi1
+
+### 103.7 Busca em arquivos de textos
+
+- REGEX = Regular Expression, um conjunto que define um padrão de texto.
+- Grep -c – Conta quantas ocorrências tem dentro do texto.
+- Grep -i Ignora o case sensitive.
+- Grep -r Linux t\*
+- Grep -E, expande as expressões regulares, pode se usar o egrep também
+- Fgrep, não aplica expressões regulares
+- Grep -v – Não contém a palavra
+
+- Egrep “b[aei]g” texto.txt, tudo que contém as letras
+- Egrep “b[a-u]g” texto.txt, tudo que tem no meio as letras
+- Egrep “^Linux” texto.txt, tudo que inicia com
+- Egrep “Linux$” texto.txt tudo que termina com
+- Egrep -v “^#” texto.txt, tudo que não contém no começo da linha
+- Egrep “^$” texto, tudo que tenha linha em branco
+- Egrep -v “^$” texto, tudo que não haja linhas em branco
+- Egrep “b[a-i]g\*” texto, pode conter ou não conter o g e o resto é indefinido
+- Egrep “b[a-i]g\*e” texto, em que o inicio seja B, apareça entre B e G o a-i, o G pode ou não aparecer e o caractere após deve ter a letra E.
+- Egrep “b[a-i]g+e” texto, exige que a letra anterior apareça ao menos uma vez.
+- Egrep “b[a-i]g?” exige que apareça uma ou nenhuma vez
+- Egrep “b[a-i]g.” texto, exige que tenha uma letra depois da palavra.
+- Egrep “O.\*Linux” texto, tudo que começa com O, tem um ponto e o resto não importa até o Linux.
+- Sed ‘/Llinux/d’ texto.txt
+- Sed ‘/^#/d’ texto.txt
+- Sed ‘/[Ll]inux/d’ texto.txt
+- Sed ‘s/[Ll]inux/Windows/’ texto.txt
+- Egrep -i “Linux” texto.txt
+- Egrep -i “Linux\.” texto.txt
+
+- Grep ‘ba\{1,3\}h’ novotexto.txt : quero que o ba apareça de 1 a 3 vezes
+- A principal diferença do grep pro egrep, é que a básica precisava proteger todos caracteres especiais
+
+### 103.8 Edição básica com o Vi
+
+- VIM – VI In proved, melhoramento do VI.
+- Se digitado VI – version, veja se é mostrado o VI IMproved.
+
+- Como editar?
+  - Vi nomedoarquivo.txt. Caso ele não exista, o mesmo será criado.
+- Mode ne navegação
+
+  - / : procurar de cima para baixo, n = próxima ocorrência, shift + n ocorrência anterior
+  - h – Move o caractere para traz
+  - j – Desce para a próxima linha
+  - k – Sobe uma linha
+  - l – Próximo caractere
+  - o – começa a inserir a partir da linha debaixo.
+  - O – Começa a inserir a partir da linha decima
+  - a – começa a editar a partir do próximo caractere
+  - A – Começa e editar no final da linha.
+  - Cc – Recorta e entra no modo de edição.
+  - P – paste.
+  - Dd – também recorta.
+  - D 3 d – recorta as três linhas seguintes.
+  - Yy – Apenas copia.
+  - X – sai e salva
+  - Wq! – sai, salva e ignora o comando.
+  - ZZ – Sai e salva
+  - :! Ls /tmp – executa o comando e não sai do arquivo
+  - :e! – carrega as alterações do arquivo
+
+- Nano
+
+  - Os comandos são acessados através do Control+Letra
+  - Alt + / final
+  - Alt + \ começo
+  - Control + V = próxima pagina
+  - Pesquisar: control + w
+
+- Emacs
+  - Definindo Editor Padrão: select-editor ou update-alternatives - - config editor
