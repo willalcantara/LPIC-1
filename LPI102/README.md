@@ -87,7 +87,7 @@ Você pode usar arquivos de configuração para o modprob(/lib/mobdprod.d) para 
 
 ### 101.2 – O boot do sistema
 
-- img
+  ![](img/img003.png)
 
 - Bootloader – Atualmente é o GRUB, antes era o LILO.
 - MBR – Conjunto de dados que possui o boot loader(446 bytes), partition table(64 bytes) e validation check(2 bytes).
@@ -113,7 +113,7 @@ Boot UEFI
 - Possui compatibilidade com a BIOS
 - Configurado pelo UEFI Boot Manager : efibootmgr
 
-- img
+ ![](img/img004.png)
 
 Características:
 
@@ -125,3 +125,55 @@ Características:
 - Suporta partições além do limte de 2 TB
 - Journald – analisa informações e coleta logs, inclusive do boot
 - Jornalctl – b : mostra informações do boot atual
+
+### 101.3 – Alterar Runlevels, shutdown e reboot
+
+- Principais gerenciadores
+   - SystemV(init original) – SysV
+   - Systemd - gerenciador compatível com o SysV com melhorias
+   - Upstart – Novo gerenciador.
+   - CFG Principal do systemV: /etc/inittab
+- Diretórios de scripts
+- /etc/init.d/
+- /etc/rc.d/
+![](img/img005.png)
+- /etc/init.d
+- Runlevel(qual runlevel vc esta usando)
+- Telinit 2
+- Telinit q – recarrega informações do init
+- Init -u – re-execução do init
+#### Systemd 
+- Conteitos de Units e targets(conjunto de Units).
+- Tipos
+- Service
+- Socket
+- Device
+- Mount
+- Automount
+- Target – runlevel
+- Snapshcat
+- Principal diretório /lib/systemd/system – tenho todas as configurações
+- Systemctl – principal comando
+- Systemctl pwoeroff/reboot
+- Systemctl set-default multi-user.target : muda o default
+- Sytemctl isolate rescue.target: muda o estado
+- Sytemctl status cron.service
+
+#### upstart
+- Configurações em /etc/init/
+- Principais comandos
+- Initctl list
+- Start service
+- Stop service
+- Status service
+
+- Comandos de shutdown e restart
+   - Shutdown -h – desligar o linux mas não a maquina
+   - Poweroff – desliga o linux e a maquina.
+   - Shutdown -r + 10 – Agenda para reiniciar em 10 minutos
+   - Wall “Vamos tomar um café” : manda mensagem para todos os usuários do sistema
+
+- ACPI – Advanced Configuration and PowerInterface : especificação do mercado para tratar de gerenciamento de energia da maquina
+- Os axu | grep acpid
+- Whatis acpid : monitora as informações para tomar alguma ação.
+
