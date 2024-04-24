@@ -1,6 +1,6 @@
 ### 102 Instalação do Linux e Gerenciamento de Pacotes
 
-#### 102 Instalação do Linux e Gerenciamento de Pacotes
+#### 102.1 Instalação do Linux e Gerenciamento de Pacotes
 ![](img/img006.png)
 
 - Ponto de montagem: Pegar um diretório e associar a uma partição
@@ -30,7 +30,7 @@
 
 - LVM – Forma de gerenciamento Lógico
 - Maior facilidade de redirecionamento
-![](img/img007.png)
+![](img/img0007.png)
 - VG: Volume group
 - PV: Phisical volume
 - LV: Logical Volume
@@ -39,3 +39,17 @@
 - Cat /procs/swaps – vejo as partições swaps
 - Df -T , verifique a partição do tipo VFAT, esta montada no /boot/efi
 - Efibootmgr : ver informações e fazer alterações no EFI
+
+#### 102.2 Instalação do boot manager
+Exitem 2 grubs, o Grub Legacy e o Grub2.
+![](img/img0008.png)
+
+Cd / boot
+#Você irá ver as várias imagens de Kernel, o initrd e outros como o teste de memória.
+Cd /boot/grub
+ Update-grub –version , verifica a versão do grub.
+O padrão é alterar os parâmetros do /etc/default/grub
+Grub-mkconfig -o /boot/grub/grub.cfg
+Update-grub
+Fazer backup do bootloader(grub)
+Dd if=/dev/sda of=copia.mbr bs=1 count=512, realizando cópia do disco
