@@ -41,15 +41,26 @@
 - Efibootmgr : ver informações e fazer alterações no EFI
 
 #### 102.2 Instalação do boot manager
-Exitem 2 grubs, o Grub Legacy e o Grub2.
+- Exitem 2 grubs, o Grub Legacy e o Grub2.
 ![](img/img0008.png)
 
-Cd / boot
-#Você irá ver as várias imagens de Kernel, o initrd e outros como o teste de memória.
-Cd /boot/grub
- Update-grub –version , verifica a versão do grub.
-O padrão é alterar os parâmetros do /etc/default/grub
-Grub-mkconfig -o /boot/grub/grub.cfg
-Update-grub
-Fazer backup do bootloader(grub)
-Dd if=/dev/sda of=copia.mbr bs=1 count=512, realizando cópia do disco
+- Cd / boot
+- #Você irá ver as várias imagens de Kernel, o initrd e outros como o teste de memória.
+- Cd /boot/grub
+-  Update-grub –version , verifica a versão do grub.
+- O padrão é alterar os parâmetros do /etc/default/grub
+- Grub-mkconfig -o /boot/grub/grub.cfg
+- Update-grub
+- Fazer backup do bootloader(grub)
+- Dd if=/dev/sda of=copia.mbr bs=1 count=512, realizando cópia do disco
+
+#### 102.3 Gerenciando biblioteca compartilhada
+- É quando vc desenvolve um programa que usa uma referência a um bloco de código fora da sua aplicação.
+- É uma forma de reuso de código.
+- Ldd /usr/bin/vi, mostra todas as bibliotecas do VI. Tudo com a extensão .so.
+- /lib e /usr/lib : Contém as bibliotecas usadas por outros programas.
+- Ld.so.conf – contém as configurações dos diretórios onde serão procuradas as bibliotecas.
+- Ldconfig : usado para recompilar o ld.so.cache.
+- Ldconfig – p : lista todas as bibliotecas ativas no momento
+- Caso o usuário não seja o root, ele pode incluir bibliotecas temporariamente adicionando uma variável chamada LD_LIBRARY_PATH
+
