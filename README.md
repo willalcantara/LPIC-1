@@ -64,3 +64,90 @@
 - Ldconfig – p : lista todas as bibliotecas ativas no momento
 - Caso o usuário não seja o root, ele pode incluir bibliotecas temporariamente adicionando uma variável chamada LD_LIBRARY_PATH
 
+#### 102.4 Gerenciamento de pacotes no Debian
+![](img/img0009.png)
+- Dpkg -l – lista os pacotes instalados, com L maiúsculo ele lista os arquivos que está associado ao pacote
+- Dpkg – bash, mostra as informações do pacote bash
+- Dpkg –get-selections, faz basicamente a mesma função.
+- Dpkg – contentes : mostra a lista de arquivos que tem dentro do pacote.
+- Para instalar o novo pacote
+  - 1 – baixar um pacote caso não tenha um repositório pessoal
+  - 2 – dpkg -i Nome do pacote
+- Remover o pacote
+  - 1 – dpkg -r nome do pacote
+- Para remover todas as informações dpkg - - purge ksh
+
+- Apt-cache -package names, mostra a informações da base de dados dele.
+- Apt-cache show vim
+- Apt-cache dependes vim (quais os pacotes que o vim depende)
+- Apt-get
+
+- /etc/apt/sources.list, neste arquivo possui todas as origens de arquivos
+- Apt-get update ( verifica o sources.list e atualiza as informações da base dados com base nele)
+- Apt-get dist-upgrade, este pega tudo que tem na maquina e ve se tem versões mais atualizadas.
+- Instalando: apt-get install zsh 
+- Removendo: apt-get purge ou apt-get remove zsh zhs-common
+- Apt-get check| berifica se esta tudo funcionando
+- Apt-get clean, faz o house keeping, remove arquivos temporários e etc.
+
+- Apt-get -d  ou –download-only install nome do pacote
+- O arquivo irá estar no /var/cache/apt/archives.
+
+- Dpkg-reconfigure, utiliza uma interface de configurações de pacotes.
+- Exemplo: dpkg-reconfigure tzdata/keyborad-configuration
+
+- Dselect, é uma interface gráfica do apt.
+- Aptitude, faz também uma interface gráfica.
+
+- Aptitude search csh ( procura pelo nome csh)
+
+- Alien, converte pacotes não entendidos para instalar.
+- Alien -r nomedopacote , transforma em pacote RPM
+- Alien -i
+- Principais Opções dos Comandos Utilizados no Gerenciamento de Pacotes Debian
+
+- Comando dpkg
+   - -i = instalar
+   - -r = remover
+   - -P = remover completamente
+   - -I ou --contents = informações sobre um pacote não instalado. Arquivo .deb é informado no comando.
+   - -l = Apenas "dpkg -l" lista todos os pacotes instalados. O nome do pacote também pode ser inserido no final do comando: "dpkg -l bash"
+   - -L = Lista todos os arquivos relacionados a determinado pacote
+   - -s = status de um pacote
+   - -S = Informa o pacote ao qual o arquivo informado está associado. Ex: dpkg -S /etc/sudoers
+   - --get-selections = Lista todos os pacotes instalados
+
+
+- Comando apt-cache
+- show = Mostra as informações de um pacote específico
+- pkgnames = Mostra todos os pacotes instalados
+- depends = Exibe informações de dependência de determinado pacote. Exemplo apt-cache depends vim
+
+- Comando apt-get
+- update = Obtém informações atualizadas das fontes
+- upgrade = Realiza a atualização de todos os pacotes
+- dist-upgrade = Realiza a atualização de todos os pacotes, desde que não haja quebra de dependências
+- install = Instalar um pacote
+- remove = Remover um pacote
+- purge = Remover um pacote e todos os seus arquivos de configuração
+- check = Verifica todos os pacotes em busca de quebras de dependências e inconsistências na base de dados
+- apt-get –download-only install zsh : apenas faz o download do arquivo para o /var/cache/apt/archives
+
+- dpkg-reconfigure: Permite a reconfiguração de algum pacote que exija interação.
+- Dselect: interface gráfica do APT.
+- Alien: converte ou instala pacotes/binários alienígenas ( não .deb), como tgz,rpm e etc.
+- Alien -r package.deb : transforma pacote em .rpm
+- Alien -i package.rpm
+
+- Principais arquivos de configuração
+- /etc/apt/sources.list : contém as fontes/origens de arquivos
+- /etc/apt/sources.list.d/
+
+- APT – ADVANCED PACKAGE TOOL
+- Apt search calculator: procura o pacote pela descrição
+- Apt list: procura pelo nome
+- Apt show pacote: mosta informações
+- Apt install pacote: instala o pacote
+- Apt remove pacote ou apt purge pacote remove o pacote
+
+
