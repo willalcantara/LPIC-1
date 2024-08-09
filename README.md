@@ -243,3 +243,61 @@ Comando rpm
 - Zypper search calculator: pesquisa quais pacotes podem me atender.
 - Zypper install zsn: instala o pacote
 - Zypper refresh: atualiza os repositórios
+
+#### 102.6 Linux and virtualization guest
+![](img/img0010.png)
+
+- O Container Engine separa as aplicações e utiliza as chamadas do S.O., no entanto com as libs separadas.
+- Docker e LXC/LXD (Linux Container, foi o 1º)
+- Guest Driver ou Device Drivers : Softwares, conjunto de bibliotecas e driver que permite o Guest trabalhar melhor, melhor performance
+- Tipos de virtualização:
+- Virtualização completa(HVM):
+- A vm não sabe que ela é uma vm.
+- Não é necessário modificar o S.O. do Guest
+- Requer suporte da CPU
+- Paravirtualização(PV): 
+- Modifica o S.O. do guest, o S.O. sabe que ele é o uma VM.
+- Não requer suporte da CPU.
+- Usto de paravirtual Drivr. Exemplo: VirtIO(KVM),Xen
+- O Guest interage com o HyperVisor.
+
+- A imagem é mais utilizada agora para container, é uma definição estática do que será o container após a inicialização.
+- Pode incluir o S.O., os softares, bibliotecas, aplicações e etc.
+- Fotografia do ambiente
+- Cloud-init : Permite a customização de uma imagem já pronta, obtida de outras formas.
+- D-BUS MACHINE ID: Identificar único de um container ou maquina virtual.
+- /etc/machine-id
+- Systemd-machine-id-setup –print
+
+- Ssh host key: chave privada usada para utilizar o sistema
+- Ssh -i chave.pem user@dominioouip.
+
+- Cat qproc/cpuinfo |grep hypervisor : se não mostrar nada é uma maquina real, senão é virtual
+- Demesg | grep hypervisor:
+- Virt-what: 
+- Dmidecote -t system
+- Lshw -class systemshw -class system
+- Hostnamectl -status
+- Systemd-detect-virt
+
+- Systemctl start Docker
+- Docker os – lista containers
+- Docker run -ti centos : olha se tem o centos local, senão baixa da internet
+- O container não vem com o kernel, ele usa o kernel do host.
+
+### 104 Dispositivos, Sistemas de arquivos Linux e FHS
+#### 104.1 Criando partições e sistemas de arquivos
+- Fdisk -l : lista as pertições
+- Fdisk /dev/sdb (entra no fdisk para um determinado HD)
+- Gdisk /dev/sdc(entra no Gdisk, específico para GPT)
+- Como o Linux vai trabalhar os dados e distribuir os dados, verificação de erros, tamanho de blocos e etc.
+
+![](img/img0011.png)
+
+- MKFS -t ext3 /dev/sdb1, faz o file system, sistemas de arquivos.
+- File -s /dev/sdb1, exibe o formato da partição
+- mkswap /dev/sdb5, formata a partição como swap
+- swapon /dev/sdb5, ativa a partição como swap
+
+- Parted – tem mais opções que o fdisk
+- resizepart 2 4000M (parted,número da partição e novo tamanho da partição)
