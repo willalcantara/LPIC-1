@@ -3,8 +3,6 @@
 Exercícios para o Tópico 102
 Os exercícios a seguir tem a finalidade principal de revisar e praticar o que estudamos durante as aulas, no entanto, você também pode ser desafiado a descobrir novas opções ou formas de uso dos comandos, inclusive combinando comandos estudados em diferentes sub-tópicos.
 
-
-
 ### 102.1 Design do Layout do HD
 
 - 1. Em sua máquina Linux, quais as partições e os respectivos pontos de montagem de cada uma delas.
@@ -35,3 +33,18 @@ Os exercícios a seguir tem a finalidade principal de revisar e praticar o que e
 - 20. Utilizando o yum, remova o pacote nano
 - 21. Utilizando o yum, faça o upgrade de todos os pacotes de sua distribuição RedHat-based, sem remover pacotes obsoletos.
 - 22. Encontre a aplicação relacionada ao arquivo /etc/sudoers
+
+### 104.1 Design do Layout do HD
+
+- 1. Adicione em sua máquina virtual um novo disco de 10 GB e crie o seguinte conjunto de partições utilizando o modelo MBR:
+
+* /dev/sdX1 - 3G
+* /dev/sdX3 - 2G
+* /dev/sdX4 - O restante do disco
+* /dev/sdX5 - 500M
+* /dev/sdX6 - 1500M
+* /dev/sdX7 - 2G
+
+- 2. Redimensione a partição de número 7 para que ela tenha o tamanho de 3G ao invés de 2G.
+- 3. Defina a partição sdX5 para que ela seja utilizada na área de swap
+- 4. Formate as partições 1 e 3 como ext4, a partição 6 como XFS e a 7 como Btrfs.

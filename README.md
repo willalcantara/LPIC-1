@@ -245,6 +245,7 @@ Comando rpm
 - Zypper refresh: atualiza os repositórios
 
 #### 102.6 Linux and virtualization guest
+
 ![](img/img0010.png)
 
 - O Container Engine separa as aplicações e utiliza as chamadas do S.O., no entanto com as libs separadas.
@@ -255,7 +256,7 @@ Comando rpm
 - A vm não sabe que ela é uma vm.
 - Não é necessário modificar o S.O. do Guest
 - Requer suporte da CPU
-- Paravirtualização(PV): 
+- Paravirtualização(PV):
 - Modifica o S.O. do guest, o S.O. sabe que ele é o uma VM.
 - Não requer suporte da CPU.
 - Usto de paravirtual Drivr. Exemplo: VirtIO(KVM),Xen
@@ -274,7 +275,7 @@ Comando rpm
 
 - Cat qproc/cpuinfo |grep hypervisor : se não mostrar nada é uma maquina real, senão é virtual
 - Demesg | grep hypervisor:
-- Virt-what: 
+- Virt-what:
 - Dmidecote -t system
 - Lshw -class systemshw -class system
 - Hostnamectl -status
@@ -286,7 +287,9 @@ Comando rpm
 - O container não vem com o kernel, ele usa o kernel do host.
 
 ### 104 Dispositivos, Sistemas de arquivos Linux e FHS
+
 #### 104.1 Criando partições e sistemas de arquivos
+
 - Fdisk -l : lista as pertições
 - Fdisk /dev/sdb (entra no fdisk para um determinado HD)
 - Gdisk /dev/sdc(entra no Gdisk, específico para GPT)
@@ -300,4 +303,7 @@ Comando rpm
 - swapon /dev/sdb5, ativa a partição como swap
 
 - Parted – tem mais opções que o fdisk
+- #Parted /dev/sdc
 - resizepart 2 4000M (parted,número da partição e novo tamanho da partição)
+
+#### 104.2 Mantendo a Integridade de FSs - df e du
